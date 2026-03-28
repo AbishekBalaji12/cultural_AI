@@ -259,69 +259,138 @@ class PolitenessAnalyzer:
 
 class MessageRewriter:
     """Generates culturally appropriate rewrites"""
-    
+
     def __init__(self):
-        self.rewrite_templates = {
-            "make_polite": {
-                "request": "Could you please {action} when convenient?",
-                "order": "I would appreciate if you could {action}.",
-                "suggestion": "You might want to consider {action}."
-            },
-            "make_direct": {
-                "request": "Please {action}.",
-                "order": "{action} by {deadline}.",
-                "suggestion": "I recommend {action}."
-            },
-            "add_formality": {
-                "request": "I would be grateful if you could {action}.",
-                "order": "It would be appreciated if you could {action}.",
-                "general": "I hope this message finds you well. {original}"
-            }
+        # Profanity/slang normalization map
+        self.profanity_map = {
+            r'\bdamn\b': '', r'\bhell\b': '', r'\bcrap\b': '', r'\bstupid\b': '',
+            r'\bidiot\b': '', r'\bshut up\b': 'please be quiet',
+            r'\bscrewed\b': 'in a difficult situation', r'\bpissed\b': 'upset',
+            r'\bwhat the\b': '', r'\bwtf\b': '', r'\basap\b': 'as soon as possible',
+            r'\bfyi\b': 'for your information', r'\bbtw\b': 'by the way',
+            r'\bOMG\b': '', r'\bomg\b': '',
         }
-    
-    def extract_action(self, text: str) -> str:
-        """Extract the main action from text"""
-        # Simple extraction - in a real system, this would be more sophisticated
-        text = text.strip()
-        if text.endswith('.'):
-            text = text[:-1]
-        
-        # Remove common prefixes
-        prefixes = ['could you', 'please', 'can you', 'would you', 'i need you to']
-        for prefix in prefixes:
-            if text.lower().startswith(prefix):
+
+        # Common typo corrections
+        self.typo_map = {
+            r'\bthin\b': 'thing', r'\bthng\b': 'thing', r'\bteh\b': 'the',
+            r'\brecieve\b': 'receive', r'\boccured\b': 'occurred',
+            r'\bseperate\b': 'separate', r'\bdefinate\b': 'definite',
+            r'\bwierd\b': 'weird', r'\bbelive\b': 'believe',
+        }
+
+        # Aggressive / urgent phrase softening
+        self.aggressive_map = {
+            r'\bright now\b': 'at your earliest convenience',
+            r'\bimmediately\b': 'as soon as possible',
+            r'\binstantly\b': 'promptly',
+            r'\bthis instant\b': 'at your earliest convenience',
+            r'\bdo it now\b': 'please attend to this',
+            r'\bget it done\b': 'please complete this',
+            r'\bhurry up\b': 'please prioritize this',
+            r'\bI hope you do\b': 'I kindly request that you',
+            r'\byou must\b': 'I would appreciate if you could',
+            r'\byou need to\b': 'could you please',
+            r'\bdo that\b': 'handle this matter',
+            r'\bdo this\b': 'attend to this',
+        }
+
+    def _clean_text(self, text: str) -> str:
+        """Remove profanity, fix typos, soften aggressive phrases."""
+        cleaned = text.strip()
+
+        # Fix typos first
+        for pattern, replacement in self.typo_map.items():
+            cleaned = re.sub(pattern, replacement, cleaned, flags=re.IGNORECASE)
+
+        # Remove / replace profanity
+        for pattern, replacement in self.profanity_map.items():
+            cleaned = re.sub(pattern, replacement, cleaned, flags=re.IGNORECASE)
+
+        # Soften aggressive language
+        for pattern, replacement in self.aggressive_map.items():
+            cleaned = re.sub(pattern, replacement, cleaned, flags=re.IGNORECASE)
+
+        # Clean up multiple spaces left by removals
+        cleaned = re.sub(r'\s{2,}', ' ', cleaned).strip()
+
+        # Ensure the sentence ends with a period
+        if cleaned and cleaned[-1] not in '.!?':
+            cleaned += '.'
+
+        # Capitalize first letter
+        if cleaned:
+            cleaned = cleaned[0].upper() + cleaned[1:]
+
+        return cleaned
+
+    def _build_formal_rewrite(self, cleaned: str, speech_act: SpeechAct,
+                               profile: 'CulturalProfile') -> str:
+        """Wrap cleaned text in a culture-appropriate structure."""
+        # Strip trailing punctuation to embed inside templates cleanly
+        core = cleaned.rstrip('.!?').strip()
+
+        # Very high formality (Japanese, Indian): full formal wrapper
+        if profile.formality_preference > 0.7:
+            intent = self._extract_core_intent(core)
+            if speech_act in (SpeechAct.ORDER, SpeechAct.REQUEST):
+                return (
+                    f"I hope this message finds you well. "
+                    f"I would be most grateful if you could {intent.lower()}. "
+                    f"Thank you very much for your time and consideration.\n\nRespectfully,\n[Your Name]"
+                )
+            else:
+                return (
+                    f"I hope this message finds you well. "
+                    f"{intent.capitalize()}. "
+                    f"Thank you for your attention to this matter.\n\nRespectfully,\n[Your Name]"
+                )
+
+        # Low directness tolerance but not ultra-formal (British)
+        elif profile.directness_tolerance < 0.5:
+            intent = self._extract_core_intent(core)
+            if speech_act in (SpeechAct.ORDER, SpeechAct.REQUEST):
+                return f"When you have a moment, could you please {intent.lower()}? I would greatly appreciate it."
+            else:
+                return f"I was wondering if you might be able to {intent.lower()}."
+
+        # High directness tolerance (German, American): keep it brief but polite
+        elif profile.directness_tolerance > 0.7:
+            intent = self._extract_core_intent(core)
+            return f"Please {intent.lower()}."
+
+        # Neutral fallback
+        intent = self._extract_core_intent(core)
+        return f"Could you please {intent.lower()}? Thank you."
+
+    def _extract_core_intent(self, text: str) -> str:
+        """Strip any politeness prefixes added during cleaning to get the bare action."""
+        text = text.rstrip('.!?').strip()
+        noise_prefixes = [
+            'i kindly request that you', 'i would appreciate if you could',
+            'could you please', 'please', 'i hope you', 'kindly',
+        ]
+        lower = text.lower()
+        for prefix in noise_prefixes:
+            if lower.startswith(prefix):
                 text = text[len(prefix):].strip()
-        
-        return text if text else "complete the task"
-    
-    def rewrite_for_culture(self, original_text: str, speech_act: SpeechAct, 
-                           target_culture: str, cultural_graph: CulturalKnowledgeGraph) -> str:
-        """Rewrite text to be appropriate for target culture"""
+                lower = text.lower()
+        return text if text else "complete this task"
+
+    def rewrite_for_culture(self, original_text: str, speech_act: SpeechAct,
+                            target_culture: str, cultural_graph: 'CulturalKnowledgeGraph') -> str:
+        """Full pipeline: clean → rebuild → format for target culture."""
         profile = cultural_graph.get_profile(target_culture)
         if not profile:
             return original_text
-        
-        action = self.extract_action(original_text)
-        
-        # High formality cultures (Japanese, Indian)
-        if profile.formality_preference > 0.7:
-            if speech_act == SpeechAct.ORDER:
-                return f"I would be most grateful if you could {action}. Thank you for your consideration."
-            elif speech_act == SpeechAct.REQUEST:
-                return f"Could you please {action} at your earliest convenience? I would greatly appreciate it."
-        
-        # Low directness tolerance cultures
-        elif profile.directness_tolerance < 0.4:
-            if speech_act == SpeechAct.ORDER:
-                return f"When you have a moment, could you please {action}?"
-            elif speech_act == SpeechAct.REQUEST:
-                return f"I was wondering if you might be able to {action}."
-        
-        # High directness tolerance cultures
-        elif profile.directness_tolerance > 0.7:
-            return f"Please {action}."
-        
-        return original_text
+
+        # Step 1: clean the raw input
+        cleaned = self._clean_text(original_text)
+
+        # Step 2: build a culturally appropriate sentence around it
+        rewrite = self._build_formal_rewrite(cleaned, speech_act, profile)
+
+        return rewrite
 
 class CrossCulturalMiscommunicationIdentifier:
     """Main system class"""

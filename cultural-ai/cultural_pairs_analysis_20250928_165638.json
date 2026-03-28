@@ -1,0 +1,102 @@
+{
+  "american->japanese": {
+    "risk_level": "medium",
+    "confidence": 0.7234615384615384,
+    "explanation": "This message may appear too direct for Japanese culture, where indirect communication is preferred. In Japanese culture, commands should be phrased more respectfully to acknowledge hierarchy."
+  },
+  "american->german": {
+    "risk_level": "low",
+    "confidence": 0.6761538461538461,
+    "explanation": "Minor cultural differences detected - message should be generally acceptable."
+  },
+  "american->indian": {
+    "risk_level": "medium",
+    "confidence": 0.7038461538461538,
+    "explanation": "In Indian culture, commands should be phrased more respectfully to acknowledge hierarchy."
+  },
+  "american->british": {
+    "risk_level": "low",
+    "confidence": 0.6461538461538461,
+    "explanation": "Minor cultural differences detected - message should be generally acceptable."
+  },
+  "japanese->american": {
+    "risk_level": "low",
+    "confidence": 0.6773076923076923,
+    "explanation": "Minor cultural differences detected - message should be generally acceptable."
+  },
+  "japanese->german": {
+    "risk_level": "medium",
+    "confidence": 0.6934615384615385,
+    "explanation": "Minor cultural differences detected - message should be generally acceptable."
+  },
+  "japanese->indian": {
+    "risk_level": "low",
+    "confidence": 0.6726923076923077,
+    "explanation": "In Indian culture, commands should be phrased more respectfully to acknowledge hierarchy."
+  },
+  "japanese->british": {
+    "risk_level": "low",
+    "confidence": 0.6773076923076923,
+    "explanation": "Minor cultural differences detected - message should be generally acceptable."
+  },
+  "german->american": {
+    "risk_level": "low",
+    "confidence": 0.6530769230769231,
+    "explanation": "Minor cultural differences detected - message should be generally acceptable."
+  },
+  "german->japanese": {
+    "risk_level": "medium",
+    "confidence": 0.7165384615384616,
+    "explanation": "This message may appear too direct for Japanese culture, where indirect communication is preferred. In Japanese culture, commands should be phrased more respectfully to acknowledge hierarchy."
+  },
+  "german->indian": {
+    "risk_level": "medium",
+    "confidence": 0.6969230769230769,
+    "explanation": "In Indian culture, commands should be phrased more respectfully to acknowledge hierarchy."
+  },
+  "german->british": {
+    "risk_level": "low",
+    "confidence": 0.653076923076923,
+    "explanation": "Minor cultural differences detected - message should be generally acceptable."
+  },
+  "indian->american": {
+    "risk_level": "low",
+    "confidence": 0.6807692307692308,
+    "explanation": "Minor cultural differences detected - message should be generally acceptable."
+  },
+  "indian->japanese": {
+    "risk_level": "medium",
+    "confidence": 0.6957692307692307,
+    "explanation": "This message may appear too direct for Japanese culture, where indirect communication is preferred. In Japanese culture, commands should be phrased more respectfully to acknowledge hierarchy."
+  },
+  "indian->german": {
+    "risk_level": "medium",
+    "confidence": 0.6969230769230769,
+    "explanation": "Minor cultural differences detected - message should be generally acceptable."
+  },
+  "indian->british": {
+    "risk_level": "low",
+    "confidence": 0.6807692307692308,
+    "explanation": "Minor cultural differences detected - message should be generally acceptable."
+  },
+  "british->american": {
+    "risk_level": "low",
+    "confidence": 0.6461538461538462,
+    "explanation": "Minor cultural differences detected - message should be generally acceptable."
+  },
+  "british->japanese": {
+    "risk_level": "medium",
+    "confidence": 0.7234615384615384,
+    "explanation": "This message may appear too direct for Japanese culture, where indirect communication is preferred. In Japanese culture, commands should be phrased more respectfully to acknowledge hierarchy."
+  },
+  "british->german": {
+    "risk_level": "low",
+    "confidence": 0.6761538461538461,
+    "explanation": "Minor cultural differences detected - message should be generally acceptable."
+  },
+  "british->indian": {
+    "risk_level": "medium",
+    "confidence": 0.7038461538461538,
+    "explanation": "In Indian culture, commands should be phrased more respectfully to acknowledge hierarchy."
+  }
+}

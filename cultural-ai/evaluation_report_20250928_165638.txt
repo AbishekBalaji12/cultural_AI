@@ -1,0 +1,195 @@
+
+CROSS-CULTURAL MISCOMMUNICATION IDENTIFIER - EVALUATION REPORT
+Generated: 2025-09-28 16:56:38
+======================================================================
+
+OVERALL PERFORMANCE:
+- Total Test Cases: 16
+- Correct Predictions: 6
+- Overall Accuracy: 37.50%
+
+RISK LEVEL ACCURACY:
+- LOW: 4/8 (50.00%)
+- MEDIUM: 1/4 (25.00%)
+- HIGH: 1/4 (25.00%)
+
+CATEGORY PERFORMANCE:
+- Directness: 1/1 (100.00%)
+- Polite Request: 1/1 (100.00%)
+- Criticism: 0/1 (0.00%)
+- Suggestion: 0/1 (0.00%)
+- Over Polite: 0/1 (0.00%)
+- Appropriate: 1/1 (100.00%)
+- Too Indirect: 0/1 (0.00%)
+- Direct Request: 1/1 (100.00%)
+- Over Formal: 1/1 (100.00%)
+- Professional: 0/1 (0.00%)
+- Understated Praise: 0/1 (0.00%)
+- Direct Praise: 0/1 (0.00%)
+- Urgent Direct: 0/1 (0.00%)
+- Urgent Polite: 1/1 (100.00%)
+- Harsh Criticism: 0/1 (0.00%)
+- Gentle Feedback: 0/1 (0.00%)
+
+DETAILED ANALYSIS:
+======================================================================
+
+✓ Case 1: Directness
+Text: "Send me the report now."
+Route: American → Japanese
+Expected Risk: HIGH
+Predicted Risk: HIGH
+Confidence: 0.82
+Explanation: This message may appear too direct for Japanese culture, where indirect communication is preferred. The tone may be too informal for Japanese culture, which values formal communication. In Japanese culture, commands should be phrased more respectfully to acknowledge hierarchy.
+Suggested Rewrite: "I would be most grateful if you could Send me the report now. Thank you for your consideration."
+--------------------------------------------------
+
+✓ Case 2: Polite Request
+Text: "Could you please send the report when convenient?"
+Route: American → Japanese
+Expected Risk: LOW
+Predicted Risk: LOW
+Confidence: 0.64
+Explanation: In Japanese culture, commands should be phrased more respectfully to acknowledge hierarchy.
+Suggested Rewrite: "Could you please send the report when convenient? at your earliest convenience? I would greatly appreciate it."
+--------------------------------------------------
+
+✗ Case 3: Criticism
+Text: "This approach is wrong. Fix it immediately."
+Route: German → Indian
+Expected Risk: HIGH
+Predicted Risk: MEDIUM
+Confidence: 0.76
+Explanation: This message may appear too direct for Indian culture, where indirect communication is preferred. The tone may be too informal for Indian culture, which values formal communication. In Indian culture, commands should be phrased more respectfully to acknowledge hierarchy.
+Suggested Rewrite: "I would be most grateful if you could This approach is wrong. Fix it immediately. Thank you for your consideration."
+--------------------------------------------------
+
+✗ Case 4: Suggestion
+Text: "Perhaps we could consider an alternative approach to this task."
+Route: German → Indian
+Expected Risk: LOW
+Predicted Risk: MEDIUM
+Confidence: 0.69
+Explanation: Minor cultural differences detected - message should be generally acceptable.
+Suggested Rewrite: "Perhaps we could consider an alternative approach to this task."
+--------------------------------------------------
+
+✗ Case 5: Over Polite
+Text: "I humbly request that you might possibly consider reviewing this document if it's not too much trouble."
+Route: Japanese → American
+Expected Risk: MEDIUM
+Predicted Risk: HIGH
+Confidence: 0.81
+Explanation: Minor cultural differences detected - message should be generally acceptable.
+Suggested Rewrite: "Please I humbly request that you might possibly consider reviewing this document if it's not too much trouble."
+--------------------------------------------------
+
+✓ Case 6: Appropriate
+Text: "Please review this document by Friday."
+Route: Japanese → American
+Expected Risk: LOW
+Predicted Risk: LOW
+Confidence: 0.68
+Explanation: Minor cultural differences detected - message should be generally acceptable.
+Suggested Rewrite: "Please review this document by Friday."
+--------------------------------------------------
+
+✗ Case 7: Too Indirect
+Text: "I was wondering if you might possibly be able to help with this rather challenging task when you have a spare moment."
+Route: British → German
+Expected Risk: MEDIUM
+Predicted Risk: HIGH
+Confidence: 0.83
+Explanation: Minor cultural differences detected - message should be generally acceptable.
+Suggested Rewrite: "Please I was wondering if you might possibly be able to help with this rather challenging task when you have a spare moment."
+--------------------------------------------------
+
+✓ Case 8: Direct Request
+Text: "Please help with this task."
+Route: British → German
+Expected Risk: LOW
+Predicted Risk: LOW
+Confidence: 0.68
+Explanation: Minor cultural differences detected - message should be generally acceptable.
+Suggested Rewrite: "Please help with this task."
+--------------------------------------------------
+
+✓ Case 9: Over Formal
+Text: "Sir, I most respectfully request your kind consideration for my humble proposal."
+Route: Indian → American
+Expected Risk: MEDIUM
+Predicted Risk: MEDIUM
+Confidence: 0.72
+Explanation: Minor cultural differences detected - message should be generally acceptable.
+Suggested Rewrite: "Please Sir, I most respectfully request your kind consideration for my humble proposal."
+--------------------------------------------------
+
+✗ Case 10: Professional
+Text: "I'd like to propose this idea for your consideration."
+Route: Indian → American
+Expected Risk: LOW
+Predicted Risk: HIGH
+Confidence: 0.78
+Explanation: Minor cultural differences detected - message should be generally acceptable.
+Suggested Rewrite: "Please I'd like to propose this idea for your consideration."
+--------------------------------------------------
+
+✗ Case 11: Understated Praise
+Text: "Your work is acceptable."
+Route: German → American
+Expected Risk: MEDIUM
+Predicted Risk: HIGH
+Confidence: 0.78
+Explanation: Minor cultural differences detected - message should be generally acceptable.
+Suggested Rewrite: "Please Your work is acceptable."
+--------------------------------------------------
+
+✗ Case 12: Direct Praise
+Text: "Excellent job on this project!"
+Route: American → German
+Expected Risk: LOW
+Predicted Risk: HIGH
+Confidence: 0.81
+Explanation: Minor cultural differences detected - message should be generally acceptable.
+Suggested Rewrite: "Please Excellent job on this project!."
+--------------------------------------------------
+
+✗ Case 13: Urgent Direct
+Text: "I need this ASAP."
+Route: American → Japanese
+Expected Risk: HIGH
+Predicted Risk: MEDIUM
+Confidence: 0.77
+Explanation: This message may appear too direct for Japanese culture, where indirect communication is preferred. The tone may be too informal for Japanese culture, which values formal communication. In Japanese culture, commands should be phrased more respectfully to acknowledge hierarchy.
+Suggested Rewrite: "I would be most grateful if you could I need this ASAP. Thank you for your consideration."
+--------------------------------------------------
+
+✓ Case 14: Urgent Polite
+Text: "When you have time, could you prioritize this task?"
+Route: American → Japanese
+Expected Risk: LOW
+Predicted Risk: LOW
+Confidence: 0.67
+Explanation: Minor cultural differences detected - message should be generally acceptable.
+Suggested Rewrite: "When you have time, could you prioritize this task?"
+--------------------------------------------------
+
+✗ Case 15: Harsh Criticism
+Text: "This is completely wrong."
+Route: American → Indian
+Expected Risk: HIGH
+Predicted Risk: MEDIUM
+Confidence: 0.74
+Explanation: Minor cultural differences detected - message should be generally acceptable.
+Suggested Rewrite: "This is completely wrong."
+--------------------------------------------------
+
+✗ Case 16: Gentle Feedback
+Text: "There might be room for improvement in this approach."
+Route: American → Indian
+Expected Risk: LOW
+Predicted Risk: MEDIUM
+Confidence: 0.71
+Explanation: Minor cultural differences detected - message should be generally acceptable.
+Suggested Rewrite: "There might be room for improvement in this approach."
+--------------------------------------------------

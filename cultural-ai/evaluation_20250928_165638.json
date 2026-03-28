@@ -1,0 +1,286 @@
+{
+  "total_cases": 16,
+  "correct_predictions": 6,
+  "risk_level_accuracy": {
+    "low": 4,
+    "medium": 1,
+    "high": 1
+  },
+  "category_performance": {
+    "directness": {
+      "correct": 1,
+      "total": 1
+    },
+    "polite_request": {
+      "correct": 1,
+      "total": 1
+    },
+    "criticism": {
+      "correct": 0,
+      "total": 1
+    },
+    "suggestion": {
+      "correct": 0,
+      "total": 1
+    },
+    "over_polite": {
+      "correct": 0,
+      "total": 1
+    },
+    "appropriate": {
+      "correct": 1,
+      "total": 1
+    },
+    "too_indirect": {
+      "correct": 0,
+      "total": 1
+    },
+    "direct_request": {
+      "correct": 1,
+      "total": 1
+    },
+    "over_formal": {
+      "correct": 1,
+      "total": 1
+    },
+    "professional": {
+      "correct": 0,
+      "total": 1
+    },
+    "understated_praise": {
+      "correct": 0,
+      "total": 1
+    },
+    "direct_praise": {
+      "correct": 0,
+      "total": 1
+    },
+    "urgent_direct": {
+      "correct": 0,
+      "total": 1
+    },
+    "urgent_polite": {
+      "correct": 1,
+      "total": 1
+    },
+    "harsh_criticism": {
+      "correct": 0,
+      "total": 1
+    },
+    "gentle_feedback": {
+      "correct": 0,
+      "total": 1
+    }
+  },
+  "detailed_results": [
+    {
+      "case_id": 1,
+      "text": "Send me the report now.",
+      "sender": "american",
+      "receiver": "japanese",
+      "expected_risk": "high",
+      "predicted_risk": "high",
+      "correct": true,
+      "category": "directness",
+      "confidence": 0.8157692307692308,
+      "explanation": "This message may appear too direct for Japanese culture, where indirect communication is preferred. The tone may be too informal for Japanese culture, which values formal communication. In Japanese culture, commands should be phrased more respectfully to acknowledge hierarchy.",
+      "rewrite": "I would be most grateful if you could Send me the report now. Thank you for your consideration."
+    },
+    {
+      "case_id": 2,
+      "text": "Could you please send the report when convenient?",
+      "sender": "american",
+      "receiver": "japanese",
+      "expected_risk": "low",
+      "predicted_risk": "low",
+      "correct": true,
+      "category": "polite_request",
+      "confidence": 0.6369230769230769,
+      "explanation": "In Japanese culture, commands should be phrased more respectfully to acknowledge hierarchy.",
+      "rewrite": "Could you please send the report when convenient? at your earliest convenience? I would greatly appreciate it."
+    },
+    {
+      "case_id": 3,
+      "text": "This approach is wrong. Fix it immediately.",
+      "sender": "german",
+      "receiver": "indian",
+      "expected_risk": "high",
+      "predicted_risk": "medium",
+      "correct": false,
+      "category": "criticism",
+      "confidence": 0.7628571428571428,
+      "explanation": "This message may appear too direct for Indian culture, where indirect communication is preferred. The tone may be too informal for Indian culture, which values formal communication. In Indian culture, commands should be phrased more respectfully to acknowledge hierarchy.",
+      "rewrite": "I would be most grateful if you could This approach is wrong. Fix it immediately. Thank you for your consideration."
+    },
+    {
+      "case_id": 4,
+      "text": "Perhaps we could consider an alternative approach to this task.",
+      "sender": "german",
+      "receiver": "indian",
+      "expected_risk": "low",
+      "predicted_risk": "medium",
+      "correct": false,
+      "category": "suggestion",
+      "confidence": 0.6923076923076923,
+      "explanation": "Minor cultural differences detected - message should be generally acceptable.",
+      "rewrite": "Perhaps we could consider an alternative approach to this task."
+    },
+    {
+      "case_id": 5,
+      "text": "I humbly request that you might possibly consider reviewing this document if it's not too much trouble.",
+      "sender": "japanese",
+      "receiver": "american",
+      "expected_risk": "medium",
+      "predicted_risk": "high",
+      "correct": false,
+      "category": "over_polite",
+      "confidence": 0.8117647058823529,
+      "explanation": "Minor cultural differences detected - message should be generally acceptable.",
+      "rewrite": "Please I humbly request that you might possibly consider reviewing this document if it's not too much trouble."
+    },
+    {
+      "case_id": 6,
+      "text": "Please review this document by Friday.",
+      "sender": "japanese",
+      "receiver": "american",
+      "expected_risk": "low",
+      "predicted_risk": "low",
+      "correct": true,
+      "category": "appropriate",
+      "confidence": 0.6773076923076923,
+      "explanation": "Minor cultural differences detected - message should be generally acceptable.",
+      "rewrite": "Please review this document by Friday."
+    },
+    {
+      "case_id": 7,
+      "text": "I was wondering if you might possibly be able to help with this rather challenging task when you have a spare moment.",
+      "sender": "british",
+      "receiver": "german",
+      "expected_risk": "medium",
+      "predicted_risk": "high",
+      "correct": false,
+      "category": "too_indirect",
+      "confidence": 0.8286713286713286,
+      "explanation": "Minor cultural differences detected - message should be generally acceptable.",
+      "rewrite": "Please I was wondering if you might possibly be able to help with this rather challenging task when you have a spare moment."
+    },
+    {
+      "case_id": 8,
+      "text": "Please help with this task.",
+      "sender": "british",
+      "receiver": "german",
+      "expected_risk": "low",
+      "predicted_risk": "low",
+      "correct": true,
+      "category": "direct_request",
+      "confidence": 0.6761538461538461,
+      "explanation": "Minor cultural differences detected - message should be generally acceptable.",
+      "rewrite": "Please help with this task."
+    },
+    {
+      "case_id": 9,
+      "text": "Sir, I most respectfully request your kind consideration for my humble proposal.",
+      "sender": "indian",
+      "receiver": "american",
+      "expected_risk": "medium",
+      "predicted_risk": "medium",
+      "correct": true,
+      "category": "over_formal",
+      "confidence": 0.7153846153846153,
+      "explanation": "Minor cultural differences detected - message should be generally acceptable.",
+      "rewrite": "Please Sir, I most respectfully request your kind consideration for my humble proposal."
+    },
+    {
+      "case_id": 10,
+      "text": "I'd like to propose this idea for your consideration.",
+      "sender": "indian",
+      "receiver": "american",
+      "expected_risk": "low",
+      "predicted_risk": "high",
+      "correct": false,
+      "category": "professional",
+      "confidence": 0.7846153846153846,
+      "explanation": "Minor cultural differences detected - message should be generally acceptable.",
+      "rewrite": "Please I'd like to propose this idea for your consideration."
+    },
+    {
+      "case_id": 11,
+      "text": "Your work is acceptable.",
+      "sender": "german",
+      "receiver": "american",
+      "expected_risk": "medium",
+      "predicted_risk": "high",
+      "correct": false,
+      "category": "understated_praise",
+      "confidence": 0.7846153846153846,
+      "explanation": "Minor cultural differences detected - message should be generally acceptable.",
+      "rewrite": "Please Your work is acceptable."
+    },
+    {
+      "case_id": 12,
+      "text": "Excellent job on this project!",
+      "sender": "american",
+      "receiver": "german",
+      "expected_risk": "low",
+      "predicted_risk": "high",
+      "correct": false,
+      "category": "direct_praise",
+      "confidence": 0.8076923076923077,
+      "explanation": "Minor cultural differences detected - message should be generally acceptable.",
+      "rewrite": "Please Excellent job on this project!."
+    },
+    {
+      "case_id": 13,
+      "text": "I need this ASAP.",
+      "sender": "american",
+      "receiver": "japanese",
+      "expected_risk": "high",
+      "predicted_risk": "medium",
+      "correct": false,
+      "category": "urgent_direct",
+      "confidence": 0.7696153846153846,
+      "explanation": "This message may appear too direct for Japanese culture, where indirect communication is preferred. The tone may be too informal for Japanese culture, which values formal communication. In Japanese culture, commands should be phrased more respectfully to acknowledge hierarchy.",
+      "rewrite": "I would be most grateful if you could I need this ASAP. Thank you for your consideration."
+    },
+    {
+      "case_id": 14,
+      "text": "When you have time, could you prioritize this task?",
+      "sender": "american",
+      "receiver": "japanese",
+      "expected_risk": "low",
+      "predicted_risk": "low",
+      "correct": true,
+      "category": "urgent_polite",
+      "confidence": 0.6717948717948717,
+      "explanation": "Minor cultural differences detected - message should be generally acceptable.",
+      "rewrite": "When you have time, could you prioritize this task?"
+    },
+    {
+      "case_id": 15,
+      "text": "This is completely wrong.",
+      "sender": "american",
+      "receiver": "indian",
+      "expected_risk": "high",
+      "predicted_risk": "medium",
+      "correct": false,
+      "category": "harsh_criticism",
+      "confidence": 0.7384615384615384,
+      "explanation": "Minor cultural differences detected - message should be generally acceptable.",
+      "rewrite": "This is completely wrong."
+    },
+    {
+      "case_id": 16,
+      "text": "There might be room for improvement in this approach.",
+      "sender": "american",
+      "receiver": "indian",
+      "expected_risk": "low",
+      "predicted_risk": "medium",
+      "correct": false,
+      "category": "gentle_feedback",
+      "confidence": 0.7128205128205127,
+      "explanation": "Minor cultural differences detected - message should be generally acceptable.",
+      "rewrite": "There might be room for improvement in this approach."
+    }
+  ],
+  "overall_accuracy": 0.375
+}

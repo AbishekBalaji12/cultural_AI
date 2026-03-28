@@ -1,0 +1,62 @@
+{
+  "direct_order": {
+    "high_context": {
+      "risk": "high",
+      "confidence": 0.8157692307692308
+    },
+    "low_context": {
+      "risk": "low",
+      "confidence": 0.6773076923076923
+    }
+  },
+  "polite_request": {
+    "high_context": {
+      "risk": "low",
+      "confidence": 0.641043956043956
+    },
+    "low_context": {
+      "risk": "medium",
+      "confidence": 0.7795054945054944
+    }
+  },
+  "suggestion": {
+    "high_context": {
+      "risk": "medium",
+      "confidence": 0.7230769230769231
+    },
+    "low_context": {
+      "risk": "medium",
+      "confidence": 0.7538461538461538
+    }
+  },
+  "question": {
+    "high_context": {
+      "risk": "medium",
+      "confidence": 0.6923076923076923
+    },
+    "low_context": {
+      "risk": "high",
+      "confidence": 0.7846153846153846
+    }
+  },
+  "compliment": {
+    "high_context": {
+      "risk": "medium",
+      "confidence": 0.6923076923076923
+    },
+    "low_context": {
+      "risk": "high",
+      "confidence": 0.7846153846153846
+    }
+  },
+  "criticism": {
+    "high_context": {
+      "risk": "medium",
+      "confidence": 0.7615384615384615
+    },
+    "low_context": {
+      "risk": "medium",
+      "confidence": 0.7153846153846153
+    }
+  }
+}
